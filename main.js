@@ -13,7 +13,7 @@ for (let i = 0; i < 8; i++) {
     for (let j = 0; j < 8; j++) {
         const squareEl = document.createElement('div');
         squareEl.classList.add('square');
-        squareEl.classList.add((i + j) % 2 === 0 ? 'white' : 'black');
+        squareEl.classList.add((i + j) % 2 === 0 ? 'light' : 'dark');
         boardEl.appendChild(squareEl);
     }
 }
@@ -59,6 +59,7 @@ boardEl.innerHTML = board.toHTML();
 let activeSquare = null;
 let activePiece = [null, null];
 
+// add event listener to each square
 const addEventListeners = () => {
     const squares = document.querySelectorAll('.square');
 
@@ -106,3 +107,48 @@ const addEventListeners = () => {
 };
 
 addEventListeners();
+
+// simulated chat experience
+const chatForm = document.querySelector('#chat-form');
+const messageInput = document.querySelector('#message-input');
+
+chatForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const message = messageInput.value.trim();
+  if (message) {
+    // Add the message to the chat box
+    const messagesContainer = document.querySelector('#messages');
+    const messageElement = document.createElement('div');
+    messageElement.textContent = message;
+    messagesContainer.appendChild(messageElement);
+    // Clear the input field
+    messageInput.value = '';
+  }
+});
+
+messageInput.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    chatForm.dispatchEvent(new Event('submit'));
+  }
+});
+
+// List of random messages
+const randomMessages = [
+    'Opponent: Nice move!',
+    'Opponent: I see what you\'re trying to do...',
+    'Opponent: Interesting...',
+    'Opponent: Hmm...',
+    'Opponent: You\'re making me nervous...',
+    'Opponent: I think I have a plan...',
+    'Opponent: I\'m not sure what to do...',
+  ];
+  
+  // Generate a random message every 5 seconds
+  setInterval(() => {
+    const randomIndex = Math.floor(Math.random() * randomMessages.length);
+    const message = randomMessages[randomIndex];
+    const messageElement = document.createElement('div');
+    messageElement.textContent = message;
+    const messagesContainer = document.querySelector('#messages');
+    messagesContainer.appendChild(messageElement);
+  }, 8000);

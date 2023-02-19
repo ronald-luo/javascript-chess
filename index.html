@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Chess Game</title>
+    <title>Chess</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <h1>Chess Game</h1>
-    <div id="board"></div>
+    <div id="container">
+      <h1>Chess</h1>
+      <div id="board-container">
+        <div id="board"></div>
+      </div>
+    </div>
+
+    <div id="chat-container">
+        <div id="messages"></div>
+        <form id="chat-form">
+          <input type="text" id="message-input" placeholder="Enter your message">
+          <button type="submit">Send</button>
+        </form>
+      </div>
     <script type="module" src="main.js"></script>
   </body>
 </html>
