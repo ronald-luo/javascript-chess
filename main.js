@@ -119,7 +119,7 @@ chatForm.addEventListener('submit', (event) => {
     // Add the message to the chat box
     const messagesContainer = document.querySelector('#messages');
     const messageElement = document.createElement('div');
-    messageElement.textContent = message;
+    messageElement.textContent = `You: ${message}.`;
     messagesContainer.appendChild(messageElement);
     // Clear the input field
     messageInput.value = '';
@@ -141,9 +141,12 @@ const randomMessages = [
     'Opponent: You\'re making me nervous...',
     'Opponent: I think I have a plan...',
     'Opponent: I\'m not sure what to do...',
+    'Opponent: Are you sure you\'re not Magnus Carlsen?',
+    'Opponent: I\'m not sure I like this move...',
+    'Opponent: Gary Kasporov would be proud of this one.',
   ];
   
-  // Generate a random message every 5 seconds
+  // Generate a random message every 8 seconds
   setInterval(() => {
     const randomIndex = Math.floor(Math.random() * randomMessages.length);
     const message = randomMessages[randomIndex];
